@@ -28,7 +28,10 @@ public class SettingsController {
 
     @PostMapping("/settings/profile")
     public String updateProfile(@CurrentUser Account account, @Valid Profile profile, Errors errors, Model model) {
-        // 폼에서 입력한 값들은 ModelAttribute 로 받아서 profile로 처리할꺼고, 바인딩 에러들은 바로 오른쪽의 errors로 받을꺼다. 꼭 이렇게 짝을 지어서 써야한다. errors가 받는 객체 오른쪽에 위치!
+        // 폼에서 입력한 값들은 ModelAttribute 로 받아서 profile로 처리할꺼고,
+        // 바인딩 에러들은 바로 오른쪽의 errors로 받을꺼다.
+        // 꼭!! 이렇게 짝을 지어서 써야한다.
+        // errors는 바인딩 받는 객체(profile) 뒤(오른쪽)에 위치!
         if(errors.hasErrors()) {
             model.addAttribute(account);
             return "settings/profile";
