@@ -107,14 +107,22 @@ public class AccountService implements UserDetailsService {
     }
 
     public void completedSignUp(Account account) {
+        // 여기서 어카운트는 퍼시스트 상태임 영속성 컨텍스트가 이미 만들어진 상태에서 트랜잭션에서 들어감.
         account.completedSignUp();
         autoLogin(account);
     }
 
     public void updateProfile(Account account, Profile profile) {
+        // 여기 어카운트는 세션에 넣어뒀던 값을 받아서 온것임.
+        // 트랜잭션이 끝난지 오래임. detached
         account.setUrl(profile.getUrl());
         account.setBio(profile.getBio());
         account.setOccupation(profile.getOccupation());
         account.setLocation(profile.getLocation());
+        account.setProfileImage(profile.getProfileImage());
+
+        // .save를 호출하면 save 구현체 안에서 id 값이 있는지 확인하고 있으면 머지한다.
+        // 지금 내용으로. 업데이트 발생
+        accountRepository.save(account);
     }
 }

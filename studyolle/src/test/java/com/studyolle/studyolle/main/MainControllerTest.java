@@ -20,13 +20,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-// @RunWith(...) , ExtendWith 이런서 junit5 부터 안써도 됨. 써드파티 junit5 지원하는? 이런거 쓸거면 ExtendWith 쓰겠지만, 스프링 부트 기반 테스트 에서는 필요 없음.
+// @RunWith(...) , ExtendWith 이런서 junit5 부터 안써도 됨.
+// ExtendWith 이미 스프링부트 테스트에 달려있음.
+// junit5 애노테이션들은 메타애노테이션으로 사용될수 있다?? 이게 뭔말이지??
+// 써드파티 junit5 지원하는? 이런거 쓸거면 ExtendWith 쓰겠지만, 스프링 부트 기반 테스트 에서는 필요 없음.
 @SpringBootTest
 @AutoConfigureMockMvc
 //@RequiredArgsConstructor
 class MainControllerTest {
 
-//    private final MockMvc mockMvc;
+//  private final MockMvc mockMvc;
 //  junit5 가 di를 지원해준다. 타입이 정해져있는데,
 //  위의 방식은 안된다.
 // 스프링이 주입 못하고 junit이 다른 인스턴스를 넣으려고 시도하기 때문

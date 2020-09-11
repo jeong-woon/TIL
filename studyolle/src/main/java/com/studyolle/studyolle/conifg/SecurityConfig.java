@@ -60,7 +60,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PersistentTokenRepository tokenRepository() {
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
-        // jdbc는 datasource 필요, 우리는 jpa 쓰니까 당연히 빈으로 등록 되어있음. 위에서 생성자로 주입받을 수 있다.
+        // jdbc는 datasource 필요,
+        // 우리는 jpa 쓰니까 당연히 빈으로 등록 되어있음. 위에서 생성자로 주입받을 수 있다.
         jdbcTokenRepository.setDataSource(dataSource);
         return jdbcTokenRepository;
     }
